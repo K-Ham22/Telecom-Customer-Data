@@ -1,0 +1,43 @@
+WITH churn_table AS (
+SELECT * 
+	FROM customer
+	LEFT JOIN contract
+		ON customer.contract_id = contract.contract_id
+	LEFT JOIN job
+		ON customer.job_id = job.job_id
+	LEFT JOIN location
+		ON customer.location_id = location.location_id
+	LEFT JOIN payment
+		ON customer.payment_id = payment.payment_id
+)
+
+SELECT
+	customer_id
+	, lat
+	, lng
+	, population
+	, children
+	, age
+	, income
+	, marital
+	, churn
+	, gender
+	, tenure
+	, monthly_charge
+	, bandwidth_gp_year
+	, outage_sec_week
+	, email
+	, contacts
+	, yearly_equip_faiure AS yearly_equip_failure
+	, techie
+	, port_modem
+	, tablet
+	, duration AS contract_length
+	, job_title
+	, zip
+	, city
+	, state
+	, county
+	, payment_type
+FROM churn_table
+
